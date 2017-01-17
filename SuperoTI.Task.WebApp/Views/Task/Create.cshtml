@@ -1,0 +1,50 @@
+﻿@model SuperoTI.Task.DAO.TaskModel
+
+@{
+    ViewBag.Title = "Incluir Tarefa";
+}
+
+<h2>Incluir</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Tarefa</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.Label("Título", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Descrição", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" data-loading-text="Salvando..." data-toggle="tooltip" title="Salvar" class="btn btn-primary" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
+                </button>
+                <a href='@Url.Action("Index")' data-toggle="tooltip" title="Voltar" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+                </a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

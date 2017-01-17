@@ -1,0 +1,60 @@
+﻿@model SuperoTI.Task.DAO.TaskModel
+
+@{
+    ViewBag.Title = "Remover";
+}
+
+<h2>Remover</h2>
+
+<h3>Tem certeza que deseja remover o registro abaixo?</h3>
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Título
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            Data Inserção
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InsertDate)
+        </dd>
+        <dt>
+            Última Atualização
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+        <dt>
+            Descrição
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            Status
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StatusDescription)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" data-loading-text="Removendo..." data-toggle="tooltip" title="Remover" class="btn btn-primary" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Remover
+                </button>
+                <a href='@Url.Action("Index")' data-toggle="tooltip" title="Voltar" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+                </a>
+            </div>
+        </div>
+    }
+</div>
